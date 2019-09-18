@@ -1,18 +1,32 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+	<div class="home">
+		<!-- 左侧工具栏 -->
+		<el-drawer :visible.sync="isDrawerVisible" :direction="direction" :before-close="handleClose" :size="3">
+			<u-header></u-header>
+			<s-area></s-area>
+		</el-drawer>  
+	</div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import uHeader from '../components/UserHeader';
+import sArea from '../components/SearchArea';
 
 export default {
-  name: 'home',
-  components: {
-    HelloWorld
-  }
+	components: {
+		uHeader, sArea
+	},
+	name: 'home',
+	data() {
+		return {
+			isDrawerVisible: true,
+        	direction:'ltr',
+		}
+	},
+	methods: {
+		handleClose(done) {
+			done();
+		},
+	}
 }
 </script>
