@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="search-area">
         <!-- 搜索区 -->
         <div>
             <el-input maxlength="100px" name="Myinput" v-model="input" placeholder="请输入内容"></el-input>
@@ -34,11 +34,86 @@
 </template>
 
 <script>
+const classesOptions=['GIS软件设计','数据库设计','数字图像处理'];
 export default {
+    
     data() {
         return {
-
+            activeName:'first',
+            input: ' ',
+            props: {
+                label: 'name',
+                children: 'zones'
+            },
+                    Treecount:1,
+            checkAll: true,
+            checkedClass: [],
+            classes: classesOptions,
+            isIndeterminate: true
         }
+    },
+    
+    methods:{
+        handleClick(tab,event){
+            console.log(tab,event);
+        },
+    
+        handleSelect(key, keyPath) {
+            console.log(key, keyPath);
+        },
+        handleCheckAllChange(val) {
+            this.checkedClass = val ? classesOptions : [];
+            this.isIndeterminate = false;
+        },
+        handleCheckedClassesChange(value) {
+            let checkedCount = value.length;
+            this.checkAll = checkedCount === this.classes.length;
+            this.isIndeterminate = checkedCount > 0 && checkedCount < this.classes.length;
+        },
+    
+        loadNode(node, resolve) {
+        var hasChild=true;
+        if (node.level === 0) {
+          var CountData=new Date();
+          var MonthData=new Array();
+          for(var i=CountData.getFullYear();i>=2014;i--){
+            MonthData.push({name:i+'年'});
+          }
+          return resolve(MonthData);
+        }
+        if(node.level===2){
+          hasChild=false;
+        }
+        if (node.level > 1) return resolve([]);
+        setTimeout(() => {
+          var data;
+          if (hasChild) {
+            var data=new Array();
+          for(var i=12;i>=1;i--){
+              data.push({
+              name: '月份' + i
+            })
+          };
+          return resolve(data);
+          } else {
+            data = [];
+          }
+
+          resolve(data);
+        }, 500);
+      },
+      handleCheckChange(data, checked, indeterminate) {
+        console.log(data, checked, indeterminate);
+      },
+      handleNodeClick(data) {
+        console.log(data);
+      },
     }
 }
 </script>
+
+<style scoped>
+.search-area{
+    text-align: center;
+}
+</style>
