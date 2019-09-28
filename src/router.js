@@ -20,6 +20,26 @@ export default new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
     },
     {
+      path: '/user',
+      name: 'User HomePage',
+      component: () => import('./views/UserHomePage.vue')
+    },
+    {
+      path: '/item',
+      name: 'Item',
+      component: () => import('./views/UserItem.vue')
+    },
+    {
+      path: '/create',
+      name: 'Create Item',
+      component: () => import('./views/CreateNewItem.vue')
+    },
+    {
+      path: '/modify',
+      name: 'Modify Information',
+      component: () => import('./views/ModifyInfo.vue')
+    },
+    {
       path: '/login',
       name: 'Login Page',
       component: () => import('./views/Login.vue')

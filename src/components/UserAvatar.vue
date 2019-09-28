@@ -3,15 +3,16 @@
         <div class="avatar-wrapper"> 
             <!-- 头像框 -->
             <el-tooltip  effect="dark" content="编辑个人信息" placement="bottom">
-                <router-link :to="{path:'/'}">
+                <router-link :to="{path:'/modify'}">
                 <el-avatar :size="170" :src="userImg" @error="imgErrorHandler" class="avatar-img">
                     <img src="error.png"/>
                 </el-avatar></router-link>
             </el-tooltip>
         </div>
-        <!-- <div style="margin-top:30px;">
-             <el-button type="primary" plain style="width:80%;">编辑信息</el-button>
-        </div> -->
+        <div style="margin-top:20px;font-size:25px;color:rgba(10,10,10,0.8);">
+             <!-- <el-button type="text" disabled style="width:80%;">{{user}}</el-button> -->
+             {{user}}
+        </div>
     </el-aside>
 </template>
 
@@ -20,7 +21,11 @@ export default {
     data() {
         return {
             userImg:'akari.jpg',
+            user:"",
         };
+    },
+    created() {
+        this.user = sessionStorage.getItem("user");
     },
     methods: {
         

@@ -1,7 +1,7 @@
 <template>
     <div style="min-height:100%;">
         <navigation-bar></navigation-bar>
-        <single-item :owner=true user="zhangyuhang" item="test"></single-item>
+        <single-item :owner=true :user="user" :item="item"></single-item>
         <!-- <el-button @click="dialogvisible=true"></el-button>
         <el-dialog title="test" :visible.sync="dialogVisible" width="80%">
             <single-item :owner=false user="zhangyuhang" item="test"></single-item>
@@ -25,33 +25,17 @@ export default {
     data () {
         return {
             dialogVisible:false,
-            live2dwmodel:"z16",
+            
+            user:"",
+            item:"",
         };
     },
     methods: {
-        createmodel: function() {
-            window.L2Dwidget.init({
-            pluginRootPath: "live2dw/",
-            pluginJsPath: "lib/",
-            pluginModelPath: "live2d-widget-model-" + this.live2dwmodel + "/assets/",
-            tagMode: false,
-            debug: false,
-            model: {
-            jsonPath:
-                "/live2dw/live2d-widget-model-" +
-                this.live2dwmodel +
-                "/assets/" +
-                this.live2dwmodel +
-                ".model.json"
-            },
-            display: { position: "right", width: 200, height: 400 },
-            mobile: { show: false },
-            log: true
-            });
-        },
+        
     },
     created() {
-        setTimeout(this.createmodel, 10);
+        this.user = sessionStorage.getItem("user");
+        this.item = sessionStorage.getItem("item");
     },
 
 }
