@@ -1,20 +1,45 @@
 <template>
     <el-main class="createMain">
         <div class="create-head">创建新项目</div>
+        <div style="margin-left:10%;float:left;color:#606266;">选择项目展板：</div>
+        <div class="create-img">
+            <el-upload
+                class="avatar-uploader"
+                action="createItem"
+                :auto-upload="false"
+                :data="formData"
+                :show-file-list="false"
+                :on-change="imageChange"
+                :on-success="handleImgSuccess"
+                :before-upload="beforeImgUpload">
+                <img v-if="imageUrl" :src="imageUrl" class="avatar">
+                <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+            </el-upload>
+        </div>
+
         <div class="create-form">
+            
+
         <el-form :model="formData" :rules="formRules" label-width="100px" :ref="formData" >
-            <el-form-item label="项目名称" prop="name">
-                <el-input v-model="formData.name"></el-input>
-            </el-form-item>
             <el-form-item label="所属课程" prop="course">
-                <el-select v-model="formData.course" placeholder="请选择项目所属的课程">
+                <el-select v-model="formData.course" placeholder="请选择项目所属的课程" style="float: left;">
                     <template v-for="(course, index) in courses">
                         <el-option :label="course" :value="course" :key="index"></el-option>
                     </template>
                 </el-select>
             </el-form-item>
+
+            <el-form-item label="项目名称" prop="name">
+                <el-input v-model="formData.name"></el-input>
+            </el-form-item>
+            
+            <el-form-item label="项目简介" prop="illustrator">
+                <el-input v-model="formData.illustrator" placeholder="项目简介，选填"></el-input>
+            </el-form-item>
+            <el-button type="success" icon="el-icon-check" style="float:left;margin-left:8%;" @click="createItem">创建项目</el-button>
         </el-form>
         </div>
+        
     </el-main>
 </template>
 
@@ -23,21 +48,71 @@ export default {
     data() {
         return {
             courses:["GIS开发设计","软件工程","C语言","C++"],
+            userId:"",
+            imageUrl:"",
             formData: {
+                userId:this.userId,
                 name:'',
                 course:'',
+                illustrator:'',
             },
             formRules: {
                 name:[{ required: true, message: '请输入项目名称', trigger: 'blur' }],
                 course:[{required: true, message: '请选择所属课程', trigger: 'change'}],
+                illustrator:[{required: false, message: '选填', trigger: 'blur'}],
             },
 
         };
+    },
+    methods: {
+        createItem() {
+
+        },
+
+        imageChange(file) {
+            this.imageUrl = URL.createObjectURL(file.raw);
+        },
+
+        beforeImgUpload () {
+            
+        },
+    },
+    created() {
+        this.userId = sessionStorage.getItem("userId");
     },
 }
 </script>
 
 <style scoped>
+ .avatar-uploader {
+    float: left;
+    position: relative;
+}
+
+  .avatar-uploader {
+    border: 1px dashed #d9d9d9;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .avatar-uploader:hover  {
+    border-color: #409EFF;
+  }
+ .avatar-uploader-icon {
+    font-size: 28px;
+    color: #8c939d;
+    width: 165px;
+    height: 165px;
+    line-height: 178px;
+    text-align: center;
+  }
+  .avatar {
+    width: 165px;
+    height: 165px;
+    display: block;
+  }
+
 .create-head {
     text-align: left;
     margin-left: 10%;
@@ -47,10 +122,17 @@ export default {
     color: rgba(103,158,241,0.9);
 }
 
+.create-img {
+    margin-left: 13%;
+    margin-bottom: 20px;
+}
+
 .create-form {
-    width: 300px;
+    width: 450px;
     margin-left: 8%;
+    margin-top: 25px;
     float: left;
+
 }
 
 .createMain {
@@ -58,7 +140,7 @@ export default {
     border-left:2px solid rgba(88,158,248,0.1);
     border-right:2px solid rgba(88,158,248,0.1);
     /* background-color: aquamarine; */
-    min-height: 600px;
+    min-height: 550px;
     overflow: hidden;
 }
 </style>
