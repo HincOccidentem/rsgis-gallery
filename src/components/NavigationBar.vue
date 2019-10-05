@@ -4,7 +4,7 @@
             <el-menu-item index="/" style="margin-left:15%;">主站<el-divider direction="vertical"></el-divider></el-menu-item>
             
             <el-menu-item style="margin-left:3%;">
-                <el-input placeholder="搜索" v-model="input3"  size="mini">
+                <el-input placeholder="搜索" v-model="input"  size="mini">
                     <!-- <el-button slot="append" icon="el-icon-search" type="danger" ></el-button> -->
                 </el-input>
             </el-menu-item>
@@ -29,7 +29,7 @@ export default {
     data () {
         return {
             activeIndex:"/user",
-
+            input:'',
         };
     },
     methods: {

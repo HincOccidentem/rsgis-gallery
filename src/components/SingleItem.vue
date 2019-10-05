@@ -124,7 +124,14 @@ export default {
                 item:"",
             },
             fileList:[],
-            mainTableData:[],
+            mainTableData:[
+                {
+                    filename:'test',
+                    uptime:'2019-09-10',
+                    size:'2M',
+                    
+                },
+            ],
             tableSelection:[],
             tab_choice:false,
         }

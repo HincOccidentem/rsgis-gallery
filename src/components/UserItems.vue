@@ -100,6 +100,6 @@ export default {
     border-left:2px solid rgba(88,158,248,0.1);
     border-right:2px solid rgba(88,158,248,0.1);
     margin-right:15%;
-    min-height: 600px;
+    min-height: 550px;
 }
 </style>
