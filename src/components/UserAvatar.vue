@@ -21,7 +21,7 @@ export default {
     data() {
         return {
             userImg:'akari.jpg',
-            user:"",
+            userId:"",
         };
     },
     created() {

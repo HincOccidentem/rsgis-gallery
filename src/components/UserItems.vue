@@ -28,6 +28,7 @@ export default {
         return {
             input:"",
             userItem:{},
+            userId:'',
             userItems:[{
                 name:"tesssst",
                 course:"GIS软件开发设计ssssssssssssssssssssssss",

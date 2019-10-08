@@ -4,7 +4,9 @@
         <el-tab-pane disabled>
         <!-- <span slot="label"></span> -->
             <div class="avatar" slot="label">
-                
+                <el-avatar :size="150" :src="userImg" @error="imgErrorHandler" class="avatar-img">
+                    <img src="error.png"/>
+                </el-avatar>
             </div>
 
 
@@ -17,6 +19,7 @@
         <!-- <el-tab-pane label="——————" disabled></el-tab-pane> -->
         <el-tab-pane name="first">
             <span slot="label" style="float:left;">头像昵称</span>
+            <info-avatar></info-avatar>
         </el-tab-pane>
         <el-tab-pane label="" disabled></el-tab-pane>
         <el-tab-pane  name="second">
@@ -30,14 +33,24 @@
         <el-tab-pane name="fourth">
             <span slot="label" style="float:left;">个人邮件</span>
         </el-tab-pane>
+        <!-- <el-tab-pane label="" disabled></el-tab-pane> -->
 </el-tabs>
 </template>
 
 <script>
+import InfoAvatar from './InfoAvatar';
+
+
 export default {
+    components: {
+        InfoAvatar,
+    },
+
     data() {
         return {
-            activeName:'first'
+            activeName:'first',
+            userImg:'akari.jpg',
+            userId:'',
         };
     },
 }
@@ -47,7 +60,7 @@ export default {
 
 
 .avatar {
-    border:2px solid steelblue;
+    border:2px solid rgba(152, 200, 240, 0.9);
     border-radius: 50%;
     width: 150px;
     height: 150px;
