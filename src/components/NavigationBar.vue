@@ -53,6 +53,11 @@ export default {
     background-image: url(/main-head.png)
 }
 
+.el-menu-demo {
+    max-height: 62px;
+    overflow: hidden;
+}
+
 .el-input__inner {
     border-radius:14px;
 }

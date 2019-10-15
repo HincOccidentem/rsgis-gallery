@@ -57,8 +57,8 @@
                                     :onSuccess="uploadSuccess"
                                     :before-upload="beforfUpload" >
                                     
-                                    <el-button slot="trigger" size="mini" type="primary" v-if="owner">选取文件</el-button>
-                                    <el-button style="margin-left: 10px;" size="mini" type="success" @click="submitUpload" v-if="owner">上传到服务器</el-button>
+                                    <el-button slot="trigger" size="mini" type="primary" v-if="owner" class="button-round-left">选取文件</el-button>
+                                    <el-button size="mini" type="success" @click="submitUpload" v-if="owner" class="button-round-right">上传到服务器</el-button>
                                     
                                     <span class="edit-right">
                                         <el-button-group style="float:right;">

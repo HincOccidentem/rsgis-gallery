@@ -1,3 +1,19 @@
+/* 圆角button组 */
+.button-round-left {
+    border-top-left-radius: 14px !important;
+    border-bottom-left-radius: 14px !important;
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+    border-right: -1px solid white !important;
+}
+
+.button-round-right {
+    border-top-right-radius: 14px !important;
+    border-bottom-right-radius: 14px !important;
+    border-top-left-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+    border-left: -1px solid white !important;
+}
 
 /* NavigationBar css */
 .bar .el-input__inner {

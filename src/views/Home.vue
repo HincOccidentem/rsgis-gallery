@@ -1,6 +1,6 @@
 <template>
 	<div class="home">
-		<navigation-bar></navigation-bar>
+		<!-- <navigation-bar></navigation-bar> -->
 		<!--展开图标-->
 		<!-- <div class="side" @click="drawer = true">
 			<div class="arrow-side">

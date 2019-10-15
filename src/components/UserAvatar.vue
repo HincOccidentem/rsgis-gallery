@@ -11,7 +11,7 @@
         </div>
         <div style="margin-top:20px;font-size:25px;color:rgba(10,10,10,0.8);">
              <!-- <el-button type="text" disabled style="width:80%;">{{user}}</el-button> -->
-             {{user}}
+             {{userName}}
         </div>
     </el-aside>
 </template>
@@ -22,10 +22,11 @@ export default {
         return {
             userImg:'akari.jpg',
             userId:"",
+            userName:"",
         };
     },
     created() {
-        this.user = sessionStorage.getItem("user");
+        this.userName = sessionStorage.getItem("user");
     },
     methods: {
         
