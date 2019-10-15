@@ -1,5 +1,6 @@
 <template>
 	<div class="home">
+		<navigation-bar></navigation-bar>
 		<!--展开图标-->
 		<!-- <div class="side" @click="drawer = true">
 			<div class="arrow-side">
@@ -29,13 +30,14 @@
 
 <script>
 import $ from 'jquery';
-import pList from '../components/ProjectList'
+import pList from '../components/ProjectList';
 import uHeader from '../components/UserHeader';
 import sArea from '../components/SearchArea';
+import NavigationBar from '../components/NavigationBar';
 
 export default {
 	components: {
-		uHeader, sArea, pList
+		uHeader, sArea, pList,NavigationBar,
 	},
 	name: 'home',
 	data() {

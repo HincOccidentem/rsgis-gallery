@@ -1,12 +1,15 @@
 <template>
     <el-main class="userMain">
         <!-- <div style="height:2000px;"></div> -->
-        <el-row>
-        <el-input placeholder="在该个人主页中搜索" v-model="input" style="width:60%;margin-top:40px;padding-bottom:40px;"></el-input>
+        <!-- <el-row> -->
+        <el-input placeholder="在该个人主页中搜索" v-model="input" class="selectinput"></el-input>
+        <!-- <el-divider style="margin:0px;" direction="vertical"></el-divider> -->
+        <el-button-group>
         <el-button  icon="el-icon-search" type="primary" @click="select" >搜索</el-button>
-        <el-button  icon="el-icon-circle-plus-outline" type="success" @click="createItem" v-if="owner">创建新项目</el-button>
-        </el-row>
-        <!-- <el-divider style="margin:auto 0px;width:80%;"></el-divider> -->
+        <el-button  icon="el-icon-circle-plus-outline" type="success" @click="createItem" v-if="owner" round>创建新项目</el-button>
+        </el-button-group>
+        <!-- </el-row> -->
+        
         <div v-if="userItems.length==0">暂时还没有任何项目哦</div>
         <div v-for="(userItem,index) in userItems" :key="index">
             <item-card :userItem="userItem" :owner="owner"></item-card>

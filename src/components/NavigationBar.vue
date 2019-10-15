@@ -1,11 +1,11 @@
 <template>
     <div class="bar">
-        <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" background-color="#fff" text-color="#589ef8" active-text-color="#589ef8" router="true">
-            <el-menu-item index="/" style="margin-left:15%;">主站<el-divider direction="vertical"></el-divider></el-menu-item>
+        <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" background-color="rgba(255,255,255,0.7)" text-color="#589ef8" active-text-color="#589ef8" router="true">
+            <el-menu-item index="/" style="margin-left:15%;font-size:19px;" >主站<el-divider direction="vertical"></el-divider></el-menu-item>
             
-            <el-menu-item style="margin-left:3%;">
+            <el-menu-item style="margin-left:3%;font-size: 17px;">
                 <el-input placeholder="搜索" v-model="input"  size="mini">
-                    <!-- <el-button slot="append" icon="el-icon-search" type="danger" ></el-button> -->
+                    <!-- <el-button slot="append" icon="el-icon-search" type="danger" style="background:rgba(88,158,248,0.8);"></el-button> -->
                 </el-input>
             </el-menu-item>
             <el-submenu style="float:right; margin-right:15%;" class="sub">
@@ -47,8 +47,14 @@ export default {
 }
 
 .bar {
-    max-height: 62px;
+    /* max-height: 62px; */
+    height:180px;
     overflow: hidden;
+    background-image: url(/main-head.png)
+}
+
+.el-input__inner {
+    border-radius:14px;
 }
 
 .el-menu-item:hover {

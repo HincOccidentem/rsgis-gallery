@@ -23,21 +23,21 @@
                             <!-- 说明编辑 -->
                             <div class="ill">
                                 <span v-show="!editing" class="edit-left">{{illustrator}}</span>
-                                <span class="edit-right"><el-button type="primary" icon="el-icon-edit" v-if="owner" v-show="!editing" @click="editing = !editing" size="mini">编辑</el-button></span>
+                                <span class="edit-right"><el-button type="primary" icon="el-icon-edit" v-if="owner" v-show="!editing" @click="editing = !editing" size="mini" round>编辑</el-button></span>
                                 <el-input placeholder="请输入简介：" v-if="owner" v-show="editing" v-model="ill_input" :clearable="true" class="edit-left"></el-input>
                                 <span class="edit-right">
                                 <el-button-group>
-                                    <el-button type="primary"  v-if="owner" v-show="editing" @click="successEdit">保存</el-button>
-                                    <el-button type="primary"  v-if="owner" v-show="editing" @click="cancelEdit">取消</el-button>      
+                                    <el-button type="primary"  v-if="owner" v-show="editing" @click="successEdit" round>保存</el-button>
+                                    <el-button type="primary"  v-if="owner" v-show="editing" @click="cancelEdit" round>取消</el-button>      
                                 </el-button-group>
                                 </span>
                             </div>
                             <!-- 作者、课程、得分、下载量展示 -->
                             <el-button-group class="infogroup">
-                                <el-button type="primary" plain class="infobutton">作者:{{user}}</el-button>
+                                <el-button type="primary" plain class="infobutton" round>作者:{{user}}</el-button>
                                 <el-button type="primary" plain class="infobutton">课程:{{course}}</el-button>
                                 <el-button type="primary" plain class="infobutton">成绩:{{grade}}</el-button>
-                                <el-button type="primary" plain class="infobutton">下载次数:{{download_num}}</el-button>
+                                <el-button type="primary" plain class="infobutton" round>下载次数:{{download_num}}</el-button>
                             </el-button-group>
                             <!-- 上传、下载按钮 -->
                             <div class="up">
@@ -56,14 +56,19 @@
                                     :onError="uploadError"
                                     :onSuccess="uploadSuccess"
                                     :before-upload="beforfUpload" >
+                                    
                                     <el-button slot="trigger" size="mini" type="primary" v-if="owner">选取文件</el-button>
                                     <el-button style="margin-left: 10px;" size="mini" type="success" @click="submitUpload" v-if="owner">上传到服务器</el-button>
+                                    
                                     <span class="edit-right">
-                                    <el-button type="primary"  v-show="tab_choice" size="mini" @click="downloadAll">下载</el-button>
-                                    <el-button type="danger"  v-if="owner" v-show="tab_choice" size="mini" @click="deleteAll">删除</el-button>
+                                        <el-button-group style="float:right;">
+                                            <el-button type="primary"  v-show="tab_choice" size="mini" @click="downloadAll" round>下载所选</el-button>
+                                            <el-button type="danger"  v-if="owner" v-show="tab_choice" size="mini" @click="deleteAll" round>删除所选</el-button>
+                                        </el-button-group>
                                     </span>
                                     <div slot="tip" class="el-upload__tip" v-if="owner"> 建议程序打包压缩后上传，PPT等可以单独上传，可以选择多个文件后统一上传</div>
                                 </el-upload>
+                                
                             </div>
                             <!-- 项目文件表格 -->
                             <div class="mainTable">
@@ -80,8 +85,10 @@
                                     <el-table-column prop="size" label="大小"></el-table-column>
                                     <el-table-column label="操作">
                                     <template slot-scope="scope">
-                                        <el-button size="mini" type="primary" @click="handleDownload(scope.row)">下载</el-button>
-                                        <el-button size="mini" type="danger"  v-if="owner" @click="handleDelete(scope.row)">删除</el-button>
+                                        <el-button-group>
+                                        <el-button size="mini" type="primary" @click="handleDownload(scope.row)" round>下载</el-button>
+                                        <el-button size="mini" type="danger"  v-if="owner" @click="handleDelete(scope.row)" round>删除</el-button>
+                                        </el-button-group>
                                     </template>
                                     </el-table-column>
                                 </el-table>
@@ -90,7 +97,7 @@
                             <!-- readme -->
                             <div class="readme-wrapper">
                                 <div style="background-color:rgb(224,224,224);margin-top:0px;"><h3 style="margin-top:0px;"> Readme</h3></div>
-                                <div id="readme" style="margin:10px;"></div>
+                                <div id="readme" style="margin:0px;"></div>
                             </div>
                             <!-- <div style="height:3000px;"></div> -->
                         </el-tab-pane>
@@ -416,6 +423,8 @@ a {
     width:90%;
     margin:20px 5%;
 }
+
+
 
 .SingleItem-wrapper .mainTable {
     width:90%;

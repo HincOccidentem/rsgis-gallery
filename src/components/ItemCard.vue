@@ -3,7 +3,7 @@
          <div slot="header" class="card-head">
             <el-link type="primary" @click="toItem" style="float:left;font-size:20px;">{{userItem.name}}</el-link>
             <el-tooltip  effect="dark" content="警告：这将删除整个项目内容！" placement="right">
-            <el-button type="danger" v-if="owner" style="float:right;" size="mini">删除</el-button>
+            <el-button type="danger" v-if="owner" style="float:right;" size="mini" round>删除</el-button>
             </el-tooltip>
          </div>
          <div class="card-content">

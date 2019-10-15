@@ -1,0 +1,54 @@
+
+/* NavigationBar css */
+.bar .el-input__inner {
+    border-radius: 14px;
+}
+
+.bar .el-submenu__title:hover {
+    background-color: rgba(255,255,255,0.7) !important;
+}
+
+.bar .el-menu-item{
+    background-color: rgba(255,255,255,0) !important;
+}
+
+.bar .el-submenu__title{
+    background-color: rgba(255,255,255,0) !important;
+}
+
+
+/* ChangeInfo css */
+.change .el-tabs__item {
+    padding:0px 40px;
+    text-align: center;
+    margin:20px 0px !important;
+
+}
+
+.change .el-tabs__nav {
+    
+}
+
+.change .is-active{
+    border-left: 3px solid rgba(90,159,248,0.8) !important;
+}
+
+/* UserItems css*/
+.userMain .selectinput {
+    width:60%;
+    margin-top:40px;
+    padding-bottom:40px;
+    height:40px;
+    border-radius: 50% !important;
+
+}
+
+.userMain .selectinput .el-input__inner {
+    border-top-left-radius: 20px !important;
+    border-bottom-left-radius: 20px !important;
+}
+
+
+
+
+/*  */

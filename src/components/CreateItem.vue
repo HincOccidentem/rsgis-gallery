@@ -1,10 +1,12 @@
 <template>
     <el-main class="createMain">
         <div class="create-head">创建新项目</div>
-        <div style="margin-left:10%;float:left;color:#606266;">选择项目展板：</div>
+        <div style="margin-left:10%;float:left;color:#606266;height:220px;width:90%;text-align:left;">选择项目展板：
         <div class="create-img">
             <el-upload
                 class="avatar-uploader"
+                ref="upload"
+                name="img"
                 action="createItem"
                 :auto-upload="false"
                 :data="formData"
@@ -16,7 +18,7 @@
                 <i v-else class="el-icon-plus avatar-uploader-icon"></i>
             </el-upload>
         </div>
-
+        </div>
         <div class="create-form">
             
 
@@ -36,7 +38,8 @@
             <el-form-item label="项目简介" prop="illustrator">
                 <el-input v-model="formData.illustrator" placeholder="项目简介，选填"></el-input>
             </el-form-item>
-            <el-button type="success" icon="el-icon-check" style="float:left;margin-left:8%;" @click="createItem">创建项目</el-button>
+            <el-button round type="success" icon="el-icon-check" style="float:left;margin-left:8%;" @click="createItem">创建项目</el-button>
+            <el-button round type="info" @click="cancel">取消</el-button>
         </el-form>
         </div>
         
@@ -75,6 +78,10 @@ export default {
 
         beforeImgUpload () {
             
+        },
+
+        cancel () {
+            this.$router.push({path:'/user'});
         },
     },
     created() {
@@ -116,14 +123,16 @@ export default {
 .create-head {
     text-align: left;
     margin-left: 10%;
-    margin-top:5%;
-    margin-bottom: 5%;
+    margin-top:3%;
+    margin-bottom: 3%;
     font-size: 25px;
     color: rgba(103,158,241,0.9);
 }
 
+
+
 .create-img {
-    margin-left: 13%;
+    margin-left: 0px;
     margin-bottom: 20px;
 }
 
@@ -131,7 +140,7 @@ export default {
     width: 450px;
     margin-left: 8%;
     margin-top: 25px;
-    float: left;
+    /* float: left; */
 
 }
 

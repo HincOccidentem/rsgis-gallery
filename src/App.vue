@@ -7,7 +7,7 @@
 <script>
 export default {
   created() {
-    window.createModel("z16");
+    window.createModel("tororo");
   },
 }
 </script>
