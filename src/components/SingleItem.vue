@@ -400,7 +400,7 @@ a {
 }
 
 .SingleItem-wrapper .edit-left {
-    width:80%;
+    width:65%;
 }
 
 .SingleItem-wrapper .edit-right {

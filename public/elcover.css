@@ -45,6 +45,7 @@
     
 }
 
+
 .change .is-active{
     border-left: 3px solid rgba(90,159,248,0.8) !important;
 }
@@ -62,9 +63,15 @@
 .userMain .selectinput .el-input__inner {
     border-top-left-radius: 20px !important;
     border-bottom-left-radius: 20px !important;
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
 }
 
-
+.userMain .selectbutton {
+    margin-bottom: 3px;
+    border-top-left-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+}
 
 
 /*  */
