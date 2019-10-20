@@ -11,7 +11,7 @@
             <el-submenu style="float:right; margin-right:15%;" class="sub">
                 <template slot="title">
                     <router-link to="/user">
-                        <el-avatar :size="45" src="akari.jpg" @error="imgErrorHandler">
+                        <el-avatar :size="45" :src="userImg" @error="imgErrorHandler">
                         <img src="error.png"/></el-avatar>
                     </router-link>
                 </template>
@@ -28,9 +28,14 @@
 export default {
     data () {
         return {
+            userImg:"akari.jpg",
             activeIndex:"/user",
             input:'',
+            userId:'',
         };
+    },
+    created() {
+        this.userId = sessionStorage.getItem("userId");
     },
     methods: {
         imgErrorHandle () {

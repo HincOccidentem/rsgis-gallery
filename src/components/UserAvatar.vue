@@ -26,7 +26,8 @@ export default {
         };
     },
     created() {
-        this.userName = sessionStorage.getItem("user");
+        this.userName = sessionStorage.getItem("userName");
+        this.userId = sessionStorage.getItem("userId");
     },
     methods: {
         

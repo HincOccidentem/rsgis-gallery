@@ -130,6 +130,7 @@ export default {
     },
     created() {
         // 
+        this.userId = sessionStorage.getItem("userId");
     },
 
 }

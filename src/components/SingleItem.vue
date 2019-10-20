@@ -6,7 +6,7 @@
                 <div class="head-braeadcrumb">
                     <el-breadcrumb separator-class="el-icon-arrow-right">
                         <el-breadcrumb-item :to="{ path: '/' }" class="bread-item">首页</el-breadcrumb-item>
-                        <el-breadcrumb-item :to="{ path: '/user' }" class="bread-item">{{user}}</el-breadcrumb-item>
+                        <el-breadcrumb-item :to="{ path: '/user' }" class="bread-item">{{userName}}</el-breadcrumb-item>
                         <el-breadcrumb-item :to="{ path: '/item' }" class="bread-item">{{item}}</el-breadcrumb-item>
                     </el-breadcrumb>
                 </div>
@@ -34,7 +34,7 @@
                             </div>
                             <!-- 作者、课程、得分、下载量展示 -->
                             <el-button-group class="infogroup">
-                                <el-button type="primary" plain class="infobutton" round>作者:{{user}}</el-button>
+                                <el-button type="primary" plain class="infobutton" round>作者:{{userName}}</el-button>
                                 <el-button type="primary" plain class="infobutton">课程:{{course}}</el-button>
                                 <el-button type="primary" plain class="infobutton">成绩:{{grade}}</el-button>
                                 <el-button type="primary" plain class="infobutton" round>下载次数:{{download_num}}</el-button>
@@ -141,14 +141,14 @@ export default {
             ],
             tableSelection:[],
             tab_choice:false,
+            owner:false,
+            userId:"",
+            userName:"",
+            item:"",
         }
     },
     //传入参数
-    props:{
-        owner:Boolean,
-        user:String,
-        item:String,
-    },
+
     //方法
     methods: {
         //获取信息
@@ -347,6 +347,20 @@ export default {
             }
         },
     },
+    //create
+    created() {
+        this.userName = sessionStorage.getItem("userName");
+        this.userId = sessionStorage.getItem("userId");
+        this.item = sessionStorage.getItem("item");
+        if (this.userId == localStorage.getItem("user_name"))
+        {
+            this.owner = true;
+        }
+        else
+        {
+            this.owner = false;
+        }
+    },
     //mounted请求
     mounted() {
         this.getInfo();
@@ -416,7 +430,7 @@ a {
 .SingleItem-wrapper .infogroup .infobutton {
     width: 25%;
     height: 40px;
-}
+} 
 
 .SingleItem-wrapper .up {
     text-align: left;

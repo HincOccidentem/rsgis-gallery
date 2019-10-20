@@ -24,14 +24,15 @@ export default {
     components: {
         ItemCard,
     },
-    props: {
-        owner:Boolean,
-    },
+    // props: {
+    //     owner:Boolean,
+    // },
     data () {
         return {
             input:"",
             userItem:{},
             userId:'',
+            owner:false,
             userItems:[{
                 name:"tesssst",
                 course:"GIS软件开发设计ssssssssssssssssssssssss",
@@ -52,9 +53,15 @@ export default {
         };
     },
     created() {
-        // 测试session
-        sessionStorage.setItem("user","zhangyuhang");
-        sessionStorage.setItem("item","test");
+       this.userId = sessionStorage.getItem("userId");
+       if (this.userId == localStorage.getItem('user_name'))
+       {
+           this.owner = true;
+       }
+       else
+       {
+           this.owner = false;
+       }
     },
     methods: {
         select() {

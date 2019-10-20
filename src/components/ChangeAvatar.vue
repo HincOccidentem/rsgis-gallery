@@ -27,8 +27,11 @@ export default {
     data () {
         return {
             userImg:'akari.jpg',
-           
+            userId:"",
         };
+    },
+    created() {
+        this.userId = sessionStorage.getItem("userId");
     },
 }
 </script>
