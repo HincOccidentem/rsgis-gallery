@@ -130,9 +130,8 @@ export default {
     },
     created() {
         // 
-        this.userId = sessionStorage.getItem("userId");
-    },
-
+        this.userId = localStorage.getItem("user_name");
+    }
 }
 </script>
 

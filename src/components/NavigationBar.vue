@@ -1,7 +1,7 @@
 <template>
     <div class="bar">
         <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" background-color="rgba(255,255,255,0.7)" text-color="#589ef8" active-text-color="#589ef8" router="true">
-            <el-menu-item index="/" style="margin-left:15%;font-size:19px;" >主站<el-divider direction="vertical"></el-divider></el-menu-item>
+            <el-menu-item index="/home2" style="margin-left:15%;font-size:19px;" >主站<el-divider direction="vertical"></el-divider></el-menu-item>
             
             <el-menu-item style="margin-left:3%;font-size: 17px;">
                 <el-input placeholder="搜索" v-model="input"  size="mini">
@@ -15,7 +15,7 @@
                         <img src="error.png"/></el-avatar>
                     </router-link>
                 </template>
-                <el-menu-item index="/user" class="menuSub">个人主页</el-menu-item>
+                <el-menu-item index="/user" class="menuSub" @click="sessionStorage.setItem('userId',userId)">个人主页</el-menu-item>
                 <el-menu-item index="/modify" class="menuSub">修改信息</el-menu-item>
                 <el-menu-item index="/create" class="menuSub">创建项目</el-menu-item>
                 <el-menu-item index="/login" class="menuSub">退出登录</el-menu-item>
@@ -35,7 +35,7 @@ export default {
         };
     },
     created() {
-        this.userId = sessionStorage.getItem("userId");
+        this.userId = localStorage.getItem("user_name");
     },
     methods: {
         imgErrorHandle () {

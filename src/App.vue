@@ -8,6 +8,11 @@
 export default {
   created() {
     window.createModel("tororo");
+    // 测试session & localStorage
+    localStorage.setItem("user_name","zhangyuhan");
+    sessionStorage.setItem("userName","张雨杭");
+    sessionStorage.setItem("userId","zhangyuhang");
+    sessionStorage.setItem("item","test");
   },
 }
 </script>

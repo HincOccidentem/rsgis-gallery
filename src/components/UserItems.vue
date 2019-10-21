@@ -5,7 +5,8 @@
         <el-input placeholder="在该个人主页中搜索" v-model="input" class="selectinput"></el-input>
         <!-- <el-divider style="margin:0px;" direction="vertical"></el-divider> -->
         <el-button-group>
-        <el-button  icon="el-icon-search" type="primary" @click="select" class="selectbutton">搜索</el-button>
+        <el-button  icon="el-icon-search" type="primary" @click="select" class="selectbutton" v-if="owner">搜索</el-button>
+        <el-button  icon="el-icon-search" type="primary" @click="select" class="selectbutton withoutright" v-if="!owner">搜索</el-button>
         <el-button  icon="el-icon-circle-plus-outline" type="success" @click="createItem" v-if="owner" round>创建新项目</el-button>
         </el-button-group>
         <!-- </el-row> -->

@@ -29,11 +29,7 @@ export default {
         
     },
     created() {
-         // 测试session & localStorage
-        localStorage.setItem("user_name","zhangyuhang");
-        sessionStorage.setItem("userName","张雨杭");
-        sessionStorage.setItem("userId","zhangyuhang");
-        sessionStorage.setItem("item","test");
+         
     },
 
 }
