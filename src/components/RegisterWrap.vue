@@ -1,11 +1,11 @@
 <template>
     <div class="register-wrap">
         <el-form class="form" ref="registerForm" status-icon :rules="rules" :model="form" label-width="80px">
-            <el-form-item label="账户" prop="account">
-                <el-input style="width:280px;" v-model="form.account" placeholder="账户" @keydown.enter.native="submitRegister"></el-input>
+            <el-form-item label="学号" prop="account">
+                <el-input style="width:280px;" v-model="form.account" placeholder="学号" @keydown.enter.native="submitRegister"></el-input>
             </el-form-item>
-            <el-form-item label="用户名" prop="name">
-                <el-input style="width:280px;" v-model="form.name" placeholder="用户名" @keydown.enter.native="submitRegister"></el-input>
+            <el-form-item label="姓名" prop="name">
+                <el-input style="width:280px;" v-model="form.name" placeholder="姓名" @keydown.enter.native="submitRegister"></el-input>
             </el-form-item>
             <el-form-item label="密码" prop="password">
                 <el-input style="width:280px;" v-model="form.password" placeholder="密码" @keydown.enter.native="submitRegister" type="password"></el-input>

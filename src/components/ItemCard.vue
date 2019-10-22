@@ -22,19 +22,25 @@
 export default {
     data() {
         return {
-            
+            owner:false,
         };
     },
     props:{
         userItem:{},
-        owner:Boolean,
     },
     methods: {
         toItem() {
-            sessionStorage.setItem("item",this.userItem.name);
+            sessionStorage.setItem("userId",this.userItem.userId);
+            sessionStorage.setItem("item",this.userItem.itemId);
             this.$router.push({path:'/item'});
         },
     },
+    mounted() {
+        if (this.userItem.userId == localStorage.getItem('user_name'))
+        {
+            this.owner = true;
+        }
+    }
 }
 </script>
 

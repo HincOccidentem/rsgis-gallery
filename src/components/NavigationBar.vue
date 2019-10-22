@@ -15,9 +15,9 @@
                         <img src="error.png"/></el-avatar>
                     </router-link>
                 </template>
-                <el-menu-item index="/user" class="menuSub" @click="sessionStorage.setItem('userId',userId)">个人主页</el-menu-item>
-                <el-menu-item index="/modify" class="menuSub">修改信息</el-menu-item>
-                <el-menu-item index="/create" class="menuSub">创建项目</el-menu-item>
+                <el-menu-item class="menuSub" @click="user">个人主页</el-menu-item>
+                <el-menu-item class="menuSub" @click="modify">修改信息</el-menu-item>
+                <el-menu-item class="menuSub" @click="create">创建项目</el-menu-item>
                 <el-menu-item index="/login" class="menuSub">退出登录</el-menu-item>
             </el-submenu>       
         </el-menu>
@@ -41,7 +41,18 @@ export default {
         imgErrorHandle () {
             return true;
         },
-        
+        user(){
+            sessionStorage.setItem("userId",this.userId);
+            this.$router.push({path:'/user'});
+        },
+        modify(){
+            sessionStorage.setItem("userId",this.userId);
+            this.$router.push({path:'/modify'});
+        },
+        create() {
+            sessionStorage.setItem("userId",this.userId);
+            this.$router.push({path:'/create'});
+        },
     },
 }
 </script>

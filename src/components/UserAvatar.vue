@@ -3,10 +3,10 @@
         <div class="avatar-wrapper"> 
             <!-- 头像框 -->
             <el-tooltip  effect="dark" content="编辑个人信息" placement="bottom">
-                <router-link :to="{path:'/modify'}">
+                <div @click="modify">
                 <el-avatar :size="170" :src="userImg" @error="imgErrorHandler" class="avatar-img">
                     <img src="error.png"/>
-                </el-avatar></router-link>
+                </el-avatar></div>
             </el-tooltip>
         </div>
         <div style="margin-top:20px;font-size:25px;color:rgba(10,10,10,0.8);">
@@ -26,11 +26,14 @@ export default {
         };
     },
     created() {
-        this.userName = sessionStorage.getItem("userName");
+        // this.userName = sessionStorage.getItem("userName");
         this.userId = sessionStorage.getItem("userId");
     },
     methods: {
-        
+        modify() {
+            sessionStorage.setItem("userId",this.userId);
+            this.$router.push({path:'/modify'});
+        },
     },
 }
 </script>

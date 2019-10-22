@@ -22,7 +22,7 @@
         <div class="create-form">
             
 
-        <el-form :model="formData" :rules="formRules" label-width="100px" :ref="formData" >
+        <el-form :model="formData" :rules="formRules" label-width="100px" ref="formData" >
             <el-form-item label="所属课程" prop="course">
                 <el-select v-model="formData.course" placeholder="请选择项目所属的课程" style="float: left;">
                     <template v-for="(course, index) in courses">
@@ -38,11 +38,45 @@
             <el-form-item label="项目简介" prop="illustrator">
                 <el-input v-model="formData.illustrator" placeholder="项目简介，选填"></el-input>
             </el-form-item>
+
+            <el-row>
+            <el-col :span="13">
+                <el-form-item prop="members[0].id" label="组长学号" :rules="[{required:true,message:'学号不能为空',trigger: 'blur'},{type:'number',message:'学号必须为数字'}]">
+                    <el-input v-model.number="formData.members[0].id" placeholder="学号" autocomplete="off"></el-input>
+                </el-form-item>
+            </el-col>
+            <el-col :span="11">
+                <el-form-item prop="members[0].name" label="姓名" :rules="{required:true,message:'姓名不能为空',trigger: 'blur'}">
+                    <el-input v-model="formData.members[0].name" placeholder="姓名"></el-input>
+                </el-form-item>
+            </el-col>
+            </el-row>
+            
+            <el-form-item label="">
+                <el-button type="primary" round size="mini" style="float: right;" @click="addMembers">增加成员</el-button>
+                <span style="color:rgb(211,213,218);">请添加项目组所有成员的信息（不包括组长）</span>
+            </el-form-item>
+            
+            <el-row v-for="(temp, index) in formData.members.slice(1)" :key="index">
+                 <el-col :span="11">
+                    <el-form-item :prop="'members.'+(index+1)+'.id'" :label="'组员'+(index+1)+'学号'" :rules="[{required:true,message:'学号不能为空',trigger: 'blur'},{type:'number',message:'学号必须为数字'}]" size="mini">
+                        <el-input v-model.number="temp.id" placeholder="学号" autocomplete="off"></el-input>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="10">
+                    <el-form-item :prop="'members.'+(index+1)+'.name'" label="姓名" :rules="{required:true,message:'姓名不能为空',trigger: 'blur'}" size="mini">
+                        <el-input v-model="temp.name" placeholder="姓名"></el-input>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="2">
+                    <el-button size="mini" type="warning" @click="deleteMembers(temp)">删除</el-button>
+                </el-col>
+            </el-row>
+
             <el-button round type="success" icon="el-icon-check" style="float:left;margin-left:8%;" @click="createItem">创建项目</el-button>
             <el-button round type="info" @click="cancel">取消</el-button>
         </el-form>
         </div>
-        
     </el-main>
 </template>
 
@@ -54,10 +88,11 @@ export default {
             userId:"",
             imageUrl:"",
             formData: {
-                userId:this.userId,
+                userId:'',
                 name:'',
                 course:'',
                 illustrator:'',
+                members:[{id:'',name:''}],
             },
             formRules: {
                 name:[{ required: true, message: '请输入项目名称', trigger: 'blur' }],
@@ -69,7 +104,18 @@ export default {
     },
     methods: {
         createItem() {
+            this.$refs['formData'].validate((valid) => {
+                if (valid) {
+                    //上传图片并附加表单数据
 
+
+                    this.dialogVisible = false;
+                } else {
+                    //未通过检验的提示
+                    // this.dialogVisible = false;
+                    return false;
+                }
+            });
         },
 
         imageChange(file) {
@@ -80,12 +126,28 @@ export default {
             
         },
 
+        handleImgSuccess() {
+
+        },
+
         cancel () {
             this.$router.push({path:'/user'});
+        },
+
+        addMembers () {
+            this.formData.members.push({id:'',name:''});
+        },
+        deleteMembers(member) {
+            var index = this.formData.members.indexOf(member);
+            if (index !== -1)
+            {
+                this.formData.members.splice(index, 1);
+            }
         },
     },
     created() {
         this.userId = localStorage.getItem("user_name");
+        this.formData.userId = this.userId;
     },
 }
 </script>
@@ -137,7 +199,7 @@ export default {
 }
 
 .create-form {
-    width: 450px;
+    width: 500px;
     margin-left: 8%;
     margin-top: 25px;
     /* float: left; */

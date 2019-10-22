@@ -50,6 +50,8 @@
     border-left: 3px solid rgba(90,159,248,0.8) !important;
 }
 
+
+
 /* UserItems css*/
 .userMain .selectinput {
     width:60%;
@@ -57,7 +59,6 @@
     padding-bottom:40px;
     height:40px;
     border-radius: 50% !important;
-
 }
 
 .userMain .selectinput .el-input__inner {
@@ -73,5 +74,9 @@
     border-bottom-left-radius: 0px !important;
 }
 
+.userMain .withoutright {
+    border-top-right-radius: 20px !important;
+    border-bottom-right-radius: 20px !important;
+}
 
 /*  */

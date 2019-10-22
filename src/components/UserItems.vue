@@ -13,7 +13,7 @@
         
         <div v-if="userItems.length==0">暂时还没有任何项目哦</div>
         <div v-for="(userItem,index) in userItems" :key="index">
-            <item-card :userItem="userItem" :owner="owner"></item-card>
+            <item-card :userItem="userItem"></item-card>
         </div>
     </el-main>
 </template>
@@ -35,6 +35,8 @@ export default {
             userId:'',
             owner:false,
             userItems:[{
+                itemId:'1',
+                userId:'zhangyuhang',
                 name:"tesssst",
                 course:"GIS软件开发设计ssssssssssssssssssssssss",
                 grade:90,
@@ -43,6 +45,8 @@ export default {
                 note:"这个人很懒没有写任何说明",
             },
             {
+                itemId:'2',
+                userId:'zhangyuhan',
                 name:"中文测试",
                 course:"GIS",
                 grade:90,

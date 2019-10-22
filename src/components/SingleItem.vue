@@ -7,7 +7,7 @@
                     <el-breadcrumb separator-class="el-icon-arrow-right">
                         <el-breadcrumb-item :to="{ path: '/' }" class="bread-item">首页</el-breadcrumb-item>
                         <el-breadcrumb-item :to="{ path: '/user' }" class="bread-item">{{userName}}</el-breadcrumb-item>
-                        <el-breadcrumb-item :to="{ path: '/item' }" class="bread-item">{{item}}</el-breadcrumb-item>
+                        <el-breadcrumb-item :to="{ path: '/item' }" class="bread-item">{{itemName}}</el-breadcrumb-item>
                     </el-breadcrumb>
                 </div>
             </div>
@@ -33,11 +33,12 @@
                                 </span>
                             </div>
                             <!-- 作者、课程、得分、下载量展示 -->
+                                
                             <el-button-group class="infogroup">
-                                <el-button type="primary" plain class="infobutton" round>作者:{{userName}}</el-button>
-                                <el-button type="primary" plain class="infobutton">课程:{{course}}</el-button>
-                                <el-button type="primary" plain class="infobutton">成绩:{{grade}}</el-button>
-                                <el-button type="primary" plain class="infobutton" round>下载次数:{{download_num}}</el-button>
+                                <el-button type="primary" plain style="width:45%;" class="infobutton" round>创作者:{{userList}}</el-button>
+                                <el-button type="primary" plain style="width:25%;" class="infobutton">课程:{{course}}</el-button>
+                                <el-button type="primary" plain style="width:15%;" class="infobutton">成绩:{{grade}}</el-button>
+                                <el-button type="primary" plain style="width:15%;" class="infobutton" round>下载次数:{{download_num}}</el-button>
                             </el-button-group>
                             <!-- 上传、下载按钮 -->
                             <div class="up">
@@ -122,9 +123,9 @@ export default {
             illustrator:"这个人很懒没有写任何说明",
             editing:false,
             ill_input:"",
-            course:"",
-            grade:"",
-            download_num:0,
+            course:"GIS软件工程设计、、、、",
+            grade:"100",
+            download_num:1000,
             upLoadData:{
                 user:"",
                 course:"",
@@ -145,6 +146,8 @@ export default {
             userId:"",
             userName:"",
             item:"",
+            itemName:"",
+            userList:'张雨杭 张雨杭 张雨杭 张雨杭 张雨杭',
         }
     },
     //传入参数
@@ -156,7 +159,7 @@ export default {
             this.$axios
                 .get("/file/getinfo", {
                 params: {
-                    user: this.user,
+                    user: this.userId,
                     item: this.item,
                 }
                 })
@@ -169,6 +172,8 @@ export default {
                     this.download_num = response.data.download_num;
                     this.grade = response.data.grade;
                     this.mainTableData = response.data.mainTableData;
+                    this.itemName = response.data.itemName;
+                    this.userName = response.data.userName;
                 })
                 .catch((error) => {
                     this.$notify.error({
@@ -265,8 +270,8 @@ export default {
         },
 
         submitUpload(){
-            this.upLoadData.user = this.user;
-            this.upLoadData.item = this.item;
+            this.upLoadData.user = this.userId;
+            this.upLoadData.item = this.itemId;
             this.upLoadData.course = this.course;
             if (this.user.trim().length > 0 && this.item.trim().length > 0)
             {
@@ -428,7 +433,7 @@ a {
 }
 
 .SingleItem-wrapper .infogroup .infobutton {
-    width: 25%;
+    text-align: left;
     height: 40px;
 } 
 

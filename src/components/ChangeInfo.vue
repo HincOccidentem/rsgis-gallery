@@ -16,12 +16,14 @@
         </el-form-item>
          <el-form-item label="性 别">
             <el-radio-group v-model="formData.gender">
-            <el-radio label="男"></el-radio>
-            <el-radio label="女"></el-radio>
+                <!-- <el-radio-button label="男"></el-radio-button>
+                <el-radio-button label="女"></el-radio-button> -->
+                <el-radio border label="男"></el-radio>
+                <el-radio border label="女"></el-radio>
             </el-radio-group>
         </el-form-item>
         <el-form-item>
-            <el-tooltip effect="dark" content="只需要填写你想要更新的项目" placement="bottom">
+            <el-tooltip effect="dark" content="只需要修改你想要更新的项目" placement="bottom">
             <!-- <el-button-group style="float: left;"> -->
             <el-button type="success" size="mini" round style="float:left;">更新信息</el-button>
             <!-- </el-button-group> -->
@@ -71,7 +73,7 @@ export default {
             callback(new Error('请输入密码'));
             } else {
             if (this.passwordData.checkPass !== '') {
-                this.$refs.passwordData.validateField('checkPass');
+                this.$refs['password'].validateField('checkPass');
             }
             callback();
             }
@@ -108,8 +110,11 @@ export default {
         };
     },
     methods: {
+        //
+        
+
+        //password
         changePassword(){
-            
             this.$refs['password'].validate((valid) => {
                 if (valid) {
                     //Axios上传
@@ -118,7 +123,6 @@ export default {
                     this.dialogVisible = false;
                 } else {
                     //未通过检验的提示
-
                     // this.dialogVisible = false;
                     return false;
                 }
