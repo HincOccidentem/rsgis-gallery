@@ -35,10 +35,10 @@
                             <!-- 作者、课程、得分、下载量展示 -->
                                 
                             <el-button-group class="infogroup">
-                                <el-button type="primary" plain style="width:45%;" class="infobutton" round>创作者:{{userList}}</el-button>
+                                <el-button type="primary" plain style="width:41%;" class="infobutton" round>创作者:{{userList}}</el-button>
                                 <el-button type="primary" plain style="width:25%;" class="infobutton">课程:{{course}}</el-button>
-                                <el-button type="primary" plain style="width:15%;" class="infobutton">成绩:{{grade}}</el-button>
-                                <el-button type="primary" plain style="width:15%;" class="infobutton" round>下载次数:{{download_num}}</el-button>
+                                <el-button type="primary" plain style="width:17%;" class="infobutton">成绩:{{grade}}</el-button>
+                                <el-button type="primary" plain style="width:17%;" class="infobutton" round>下载次数:{{download_num}}</el-button>
                             </el-button-group>
                             <!-- 上传、下载按钮 -->
                             <div class="up">

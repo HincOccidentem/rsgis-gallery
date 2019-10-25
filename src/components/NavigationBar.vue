@@ -1,4 +1,5 @@
 <template>
+<el-header height="180px">
     <div class="bar">
         <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" background-color="rgba(255,255,255,0.7)" text-color="#589ef8" active-text-color="#589ef8" router="true">
             <el-menu-item index="/home2" style="margin-left:15%;font-size:19px;" >主站<el-divider direction="vertical"></el-divider></el-menu-item>
@@ -22,6 +23,7 @@
             </el-submenu>       
         </el-menu>
     </div>
+</el-header>
 </template>
 
 <script>
@@ -66,7 +68,8 @@ export default {
     /* max-height: 62px; */
     height:180px;
     overflow: hidden;
-    background-image: url(/main-head.png)
+    background-image: url(/main-head.png);
+    position:relative;
 }
 
 .el-menu-demo {

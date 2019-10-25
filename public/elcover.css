@@ -16,6 +16,10 @@
 }
 
 /* NavigationBar css */
+.el-header {
+    padding:0px !important;
+}
+
 .bar .el-input__inner {
     border-radius: 14px;
 }
@@ -79,4 +83,24 @@
     border-bottom-right-radius: 20px !important;
 }
 
-/*  */
+/* homeAside css*/
+.homeAside .el-row {
+    min-width: 200px;
+    height: 50px;
+}
+
+.homeAside .el-tag {
+    min-width:140px !important;
+    margin-top:9px !important;
+    margin-bottom: 9px !important;
+}
+
+/* homeMain css*/
+.el-loading-spinner{
+    margin-top: 0px !important;
+}
+
+.homeMain .el-button--text {
+    font-size: 10px !important;
+    color: rgba(151,158,165,0.9) !important;
+}

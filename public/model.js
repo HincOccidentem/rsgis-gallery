@@ -13,7 +13,7 @@ function createModel(live2dwmodel) {
             live2dwmodel +
             ".model.json"
         },
-        display: { position: "left", width: 200, height: 400 },
+        display: { position: "right", width: 200, height: 400 },
         mobile: { show: false },
         log: true
         });

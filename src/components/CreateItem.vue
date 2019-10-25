@@ -93,6 +93,7 @@ export default {
                 course:'',
                 illustrator:'',
                 members:[{id:'',name:''}],
+                membersJson:'',
             },
             formRules: {
                 name:[{ required: true, message: '请输入项目名称', trigger: 'blur' }],
@@ -107,12 +108,11 @@ export default {
             this.$refs['formData'].validate((valid) => {
                 if (valid) {
                     //上传图片并附加表单数据
+                    this.formData.membersJson = JSON.stringify(this.formData.members);
 
-
-                    this.dialogVisible = false;
                 } else {
                     //未通过检验的提示
-                    // this.dialogVisible = false;
+                    
                     return false;
                 }
             });
